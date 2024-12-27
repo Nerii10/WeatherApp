@@ -12,7 +12,7 @@ export default function Navbar(){
          >
             <div className="Navbar">
                 <h1>Weather App</h1>
-                <img src="/weather-app.png" className="icon"></img>
+                <img src="/WeatherApp/weather-app.png" className="icon"></img>
             </div>
         </motion.div>
         </>
