@@ -30,7 +30,7 @@ function WeatherData({ weatherData, error, inputValue }) {
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            >{weatherData.main.temp} °C</motion.h2>
+            >{Math.floor(weatherData.main.temp)} °C</motion.h2>
         
           {/* Każda dana w osobnym divie z klasą Data */}
           <motion.div className="Data"
@@ -40,7 +40,7 @@ function WeatherData({ weatherData, error, inputValue }) {
             viewport={{ once: false }}
             >
             <h3>Feels Like</h3>
-            <h2>{weatherData.main.feels_like} °C</h2>
+            <h2>{Math.floor(weatherData.main.feels_like)} °C</h2>
             <br></br>
             {weatherData.main.feels_like > weatherData.main.temp ? <h2>It feels warmer than it is</h2> : <h2>It feels colder than it is</h2>}
           </motion.div>

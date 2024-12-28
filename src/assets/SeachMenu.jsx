@@ -37,9 +37,18 @@ function SearchMenu({ setWeatherData, setError, setInputValue, inputValue }) {
 
   const handleCityChange = (event) => {
     if (inputValue) {
-      setCity(FilteredCities[0].name);
-      searchWeather(FilteredCities[0].name);
-      setInputValue("")
+      if(FilteredCities[0])
+      {
+        setCity(FilteredCities[0].name);
+        searchWeather(FilteredCities[0].name);
+        setInputValue("")
+      } else
+      {
+        setCity(inputValue);
+        searchWeather(inputValue);
+        setInputValue("")
+      }
+
     }
   };
 
