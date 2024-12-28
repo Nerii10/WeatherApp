@@ -14,7 +14,7 @@ function App() {
 
       <div style={{height: "200px"}}></div>
 
-      <Text Text={['Your','favorite','weather','app']} WordGap="10px" WordDelay={0.3} Center={true}/>
+      <Text Text={['Weather','app','by','nerii']} WordGap="10px" WordDelay={0.3} Center={true}/>
 
       <br></br><br></br>
 
@@ -32,6 +32,11 @@ function App() {
           inputValue={inputValue}
         />
       </div>
+
+
+      
+      <br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br><br></br>
+      
     </>
   );
 }

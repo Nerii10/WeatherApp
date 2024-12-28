@@ -1,8 +1,11 @@
 import { useState } from "react";
 import Button from "./Button";
+import { cities } from "./Cities";
+
 
 function SearchMenu({ setWeatherData, setError, setInputValue, inputValue }) {
   const [city, setCity] = useState("");
+  const [FilteredCities, setFilteredCities] = useState([])
 
   const searchWeather = async (city) => {
     if (!city) return;
@@ -27,23 +30,30 @@ function SearchMenu({ setWeatherData, setError, setInputValue, inputValue }) {
 
   const handleInputChange = (event) => {
     setInputValue(event.target.value);  // Ustawiamy inputValue w App.js
+
+      const filtered = cities.filter(city => city.name.toLowerCase().includes(inputValue.toLowerCase()));
+      setFilteredCities(filtered);
   };
 
   const handleCityChange = (event) => {
     if (inputValue) {
-      setCity(inputValue);
-      searchWeather(inputValue);
+      setCity(FilteredCities[0].name);
+      searchWeather(FilteredCities[0].name);
+      setInputValue("")
     }
   };
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
+      setInputValue("")
       handleCityChange();
     }
   };
 
   return (
+    
     <div className="SearchMenu">
+
       <div className="Inputs">
         <input
           type="text"
@@ -53,8 +63,17 @@ function SearchMenu({ setWeatherData, setError, setInputValue, inputValue }) {
           onChange={handleInputChange}
           onKeyDown={handleKeyDown}
         />
+        
         <Button onClick={handleCityChange} />
       </div>
+      
+      {!inputValue == "" && <div className="SearchList">
+      {FilteredCities.map((city,index) => <h3>{city.name}</h3>)}
+      </div>
+      }
+
+
+
     </div>
   );
 }
