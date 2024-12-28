@@ -29,70 +29,66 @@ function SearchMenu({ setWeatherData, setError, setInputValue, inputValue }) {
   };
 
   const handleInputChange = (event) => {
-    setInputValue(event.target.value);  
-      const filtered = cities.filter(city => city.name.toLowerCase().includes(inputValue.toLowerCase()));
-      setFilteredCities(filtered);
+    const value = event.target.value;
+    setInputValue(value);  
+    const filtered = cities.filter(city => city.name.toLowerCase().includes(value.toLowerCase()));
+    setFilteredCities(filtered);
   };
-
-  const handleCityChange = (event) => {
-    if (inputValue) {
-      if(FilteredCities[0])
-      {
-        setCity(FilteredCities[0].name);
-        searchWeather(FilteredCities[0].name);
-        setInputValue("")
-      } else
-      {
-        setCity(inputValue);
-        searchWeather(inputValue);
-        setInputValue("")
-      } 
-    } 
-  };
-
-  const handleKeyDown = (event) => {
-    if (event.key === "Enter") {
-      setInputValue("")
-      handleCityChange();
+  
+  const handleCityChange = (cityName) => {
+    if (cityName) {
+      setCity(cityName);
+      searchWeather(cityName);
+      setInputValue(""); // Reset input after selecting a city
     }
   };
-
+  
+  const handleKeyDown = (event) => {
+    if (event.key === "Enter" && FilteredCities.length > 0) {
+      handleCityChange(FilteredCities[0].name);  // Select the first city if Enter is pressed
+    }
+  };
+  
   return (
     <>
-    <motion.div className="SearchMenu"
-    variants={FadeInType3("down", 0)} 
-    initial="hidden"
-    whileInView="show"
-    viewport={{ once: true }}
-    >
-
-      <div className="Inputs">
-        <input
-          type="text"
-          className="InputText"
-          placeholder="City Name"
-          value={inputValue}
-          onChange={handleInputChange}
-          onKeyDown={handleKeyDown}
-        />
-        
-        <Button onClick={handleCityChange} />
-      </div>
-
-      
-        {FilteredCities[0] && (!inputValue == "" &&
-        <div className="SearchList">
-        {FilteredCities.map((city,index) => 
-        <h3 className="CitySearchHint" onClick={handleCityChange}>
-          {city.name}
-        </h3>)}
-        </div>)}
-
-
-
-    </motion.div>
+      <motion.div className="SearchMenu"
+        variants={FadeInType3("down", 0)} 
+        initial="hidden"
+        whileInView="show"
+        viewport={{ once: true }}
+      >
+  
+        <div className="Inputs">
+          <input
+            type="text"
+            className="InputText"
+            placeholder="City Name"
+            value={inputValue}
+            onChange={handleInputChange}
+            onKeyDown={handleKeyDown}
+          />
+          
+          <Button onClick={() => handleCityChange(inputValue)} />
+        </div>
+  
+        {/* Show the list only if there is input and cities to display */}
+        {inputValue !== "" && FilteredCities.length > 0 && (
+          <div className="SearchList">
+            {FilteredCities.map((city, index) => (
+              <h3
+                key={index}
+                className="CitySearchHint"
+                onClick={() => handleCityChange(city.name)} // Pass the city name to handleCityChange
+              >
+                {city.name}
+              </h3>
+            ))}
+          </div>
+        )}
+      </motion.div>
     </>
   );
+  
 }
 
 export default SearchMenu;

@@ -38,18 +38,18 @@ li{
 }
 
 
-.NavbarContainer{
-  background-color: rgba(15, 15, 15,4);
-  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.603);
+.NavbarContainer {
+  background-color: rgba(15, 15, 15, 1);
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.8);
   width: 100%;
   margin: 0;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  position:fixed;
-  z-index:20;
-
+  position: fixed;
+  z-index: 20;
 }
+
 
 .Navbar
 {
@@ -61,7 +61,7 @@ li{
 }
 
 .icon{
-  width: 70px;
+  width: 80px;
 }
 
 .SearchMenu {
@@ -127,11 +127,11 @@ li{
   gap: 20px; 
   justify-items: center;
   align-items: center; 
-  padding: 20px;
+  padding: 20px 25px;
   width: 50%;
   background-color: rgba(0, 0, 0, 0.63);
   box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.33);
-  border-radius: 25px;
+  border-radius: 30px;
 }
 
 .CitySearchHint{
@@ -139,20 +139,23 @@ li{
   border-radius: 25px;
   padding: 5px 5px;
   margin: 0;
+  color:rgba(255, 255, 255, 0.322);
   text-align: center;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.363);
   width: 150px;
   background-color: rgba(128, 128, 128, 0.075);
 }
 
 .CitySearchHint:hover{
   scale: 1.2;
+  color:white;
   cursor: pointer;
-  background-color: gray;
+  background-color: rgba(255, 255, 255, 0.205);
 }
 
 .Data{
   width: fit-content;
-  border-radius: 20px;
+  border-radius: 30px;
   padding: 20px;
   background-color:rgb(20, 20, 20);
   width: 96%;
@@ -220,4 +223,31 @@ li{
     font-size: 15px;
     margin:0;
   }
+  
+.NavbarContainer {
+  background-color: rgba(15, 15, 15, 0.7);
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.8);
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  position: fixed;
+  z-index: 20;
+  backdrop-filter: blur(15px); 
+  -webkit-backdrop-filter: blur(15px); 
+  }
+  h1{
+    color:white;
+    width: fit-content;
+    font-size: 28px;
+  }
+  .Navbar
+{
+  width: 90%;
+  gap:10%;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
 }

@@ -11,7 +11,7 @@ export default function Navbar(){
          viewport={{ once: true }}
          >
             <div className="Navbar">
-                <h1>Weather App</h1>
+                <h1>Mobile Weather App</h1>
                 <img src="/WeatherApp/weather-app.png" className="icon"></img>
             </div>
         </motion.div>
