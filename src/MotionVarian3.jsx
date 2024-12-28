@@ -1,14 +1,16 @@
-export const FadeInType1 = (direction, delay) => {
+export const FadeInType3 = (direction, delay) => {
     return {
         hidden: {
-            x: 0, y: -40,
+            y: direction === 'up' ? 50 : direction === 'down' ? -50 : 0,
+            x: direction === 'right' ? 50 : direction === 'left' ? -50 : 0,
             opacity: 0,
-
+            rotate: 10
         },
 
         show: {
             y: 0,
             x: 0,
+            rotate: 0,
             opacity: 1,
             transition: {
                 duration: 0.5,

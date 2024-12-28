@@ -1,8 +1,8 @@
 import { useState } from "react";
 import Button from "./Button";
 import { cities } from "./Cities";
-
-
+import { motion } from "framer-motion";
+import { FadeInType3 } from "../MotionVarian3";
 function SearchMenu({ setWeatherData, setError, setInputValue, inputValue }) {
   const [city, setCity] = useState("");
   const [FilteredCities, setFilteredCities] = useState([])
@@ -20,7 +20,7 @@ function SearchMenu({ setWeatherData, setError, setInputValue, inputValue }) {
       } else {
         setError(false);
         const data = await response.json();
-        setWeatherData(data);  // Aktualizujemy weatherData w App.js
+        setWeatherData(data); 
       }
     } catch (error) {
       setError(true);
@@ -29,8 +29,7 @@ function SearchMenu({ setWeatherData, setError, setInputValue, inputValue }) {
   };
 
   const handleInputChange = (event) => {
-    setInputValue(event.target.value);  // Ustawiamy inputValue w App.js
-
+    setInputValue(event.target.value);  
       const filtered = cities.filter(city => city.name.toLowerCase().includes(inputValue.toLowerCase()));
       setFilteredCities(filtered);
   };
@@ -47,9 +46,8 @@ function SearchMenu({ setWeatherData, setError, setInputValue, inputValue }) {
         setCity(inputValue);
         searchWeather(inputValue);
         setInputValue("")
-      }
-
-    }
+      } 
+    } 
   };
 
   const handleKeyDown = (event) => {
@@ -60,8 +58,13 @@ function SearchMenu({ setWeatherData, setError, setInputValue, inputValue }) {
   };
 
   return (
-    
-    <div className="SearchMenu">
+    <>
+    <motion.div className="SearchMenu"
+    variants={FadeInType3("down", 0)} 
+    initial="hidden"
+    whileInView="show"
+    viewport={{ once: true }}
+    >
 
       <div className="Inputs">
         <input
@@ -75,15 +78,17 @@ function SearchMenu({ setWeatherData, setError, setInputValue, inputValue }) {
         
         <Button onClick={handleCityChange} />
       </div>
+
       
-      {!inputValue == "" && <div className="SearchList">
-      {FilteredCities.map((city,index) => <h3>{city.name}</h3>)}
-      </div>
-      }
+        {FilteredCities[0] && (!inputValue == "" &&
+        <div className="SearchList">
+        {FilteredCities.map((city,index) => <h3 className="CitySearchHint" onClick={handleCityChange}>{city.name}</h3>)}
+        </div>)}
 
 
 
-    </div>
+    </motion.div>
+    </>
   );
 }
 

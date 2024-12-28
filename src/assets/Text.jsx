@@ -1,6 +1,5 @@
 import { motion } from "framer-motion"
 import { FadeInType1 } from "../MotionVariant1"
-
 export default function Text({ Text,WordGap,WordDelay,Center }) {
 
     return(
@@ -9,17 +8,26 @@ export default function Text({ Text,WordGap,WordDelay,Center }) {
         display: "flex",
         gap: `${WordGap}`,
         justifyContent: Center == true ? "center" : "flex-start", 
+        flexWrap:'wrap',
+        width:"90%",
+        margin: "auto"
         }}>
+        
 
 
         {Text.map((text,index) => {
             return (
+            
             <motion.h1
-            variants={FadeInType1("down", index*WordDelay)} 
+            variants={FadeInType1("down", (index)*WordDelay)} 
             initial="hidden"
             whileInView="show"
             viewport={{ once: true }}
-            >{text}
+            style={{margin: 0}}
+            key={index}
+            >
+               
+                {text}
             </motion.h1>   
             )
         })}

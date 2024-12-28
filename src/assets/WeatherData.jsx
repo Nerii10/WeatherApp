@@ -1,16 +1,20 @@
 import { motion } from "framer-motion";
 import { FadeInType1 } from "../MotionVariant1";
+
 function WeatherData({ weatherData, error, inputValue }) {
   if (!inputValue && !weatherData) {
-    return null; // Jeśli brak danych i brak inputValue, nie renderuj nic
   }
 
   return (
+    <>
+
     <div 
+  
     style={{ display: "flex", justifyContent: "center", padding: "20px" }}
     >
+
       {error ? (
-        <p>Try Again</p>
+        <h3>No data found</h3>
       ) : weatherData ? (
         <motion.div className="DataContainer"
         variants={FadeInType1("down")} 
@@ -32,7 +36,6 @@ function WeatherData({ weatherData, error, inputValue }) {
             viewport={{ once: true }}
             >{Math.floor(weatherData.main.temp)} °C</motion.h2>
         
-          {/* Każda dana w osobnym divie z klasą Data */}
           <motion.div className="Data"
             variants={FadeInType1("left")} 
             initial="hidden"
@@ -108,9 +111,9 @@ function WeatherData({ weatherData, error, inputValue }) {
           </motion.div>
         </motion.div>
       ) : (
-        <p>Input Valid City</p>
+        <p></p>
       )}
-    </div>
+    </div></>
   );
 }
 

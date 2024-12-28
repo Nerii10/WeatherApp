@@ -5,8 +5,8 @@ export default function Navbar(){
     return( 
         <>
         <motion.div className="NavbarContainer"
-         variants={FadeInType2("down")} 
          initial="hidden"
+         variants={FadeInType2("down")} 
          whileInView="show"
          viewport={{ once: true }}
          >
