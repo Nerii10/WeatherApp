@@ -82,7 +82,10 @@ function SearchMenu({ setWeatherData, setError, setInputValue, inputValue }) {
       
         {FilteredCities[0] && (!inputValue == "" &&
         <div className="SearchList">
-        {FilteredCities.map((city,index) => <h3 className="CitySearchHint" onClick={handleCityChange}>{city.name}</h3>)}
+        {FilteredCities.map((city,index) => 
+        <h3 className="CitySearchHint" onClick={handleCityChange}>
+          {city.name}
+        </h3>)}
         </div>)}
 
 

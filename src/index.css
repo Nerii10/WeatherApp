@@ -80,9 +80,10 @@ li{
 
 .SearchList {
   z-index: 55;
-  box-shadow: 0px 12px 10px 0px black;
+  box-shadow: 0px 12px 25px 0px rgba(0, 0, 0, 0.486);
   position: absolute;
   display: flex;
+  transition: 0.5s ease;
   align-items: center;
   flex-direction: column;
   border-bottom-left-radius: 25px;
