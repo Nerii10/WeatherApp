@@ -30,7 +30,7 @@ export function WeatherImages({ WeatherInfo, Hour, error}) {
       ? Hour >= 18 || Hour < 3
         ? "/WeatherApp/SnowflakeNight.png"
         : "/WeatherApp/SnowflakeDay.png"
-      : Desc.includes("haze") || Desc.includes("mist")
+      : Desc.includes("haze") || Desc.includes("mist") || Desc.includes("fog") || Desc.includes("smoke")
       ? Hour >= 18 || Hour < 3
       ? "/WeatherApp/MistNight.png"
       : "/WeatherApp/MistDay.png"
