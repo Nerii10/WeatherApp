@@ -75,14 +75,13 @@ function SearchMenu({ setWeatherData, setError, setInputValue, inputValue }) {
           <Button onClick={() => handleCityChange(inputValue)} />
         </div>
   
-        {/* Show the list only if there is input and cities to display */}
         {inputValue !== "" && FilteredCities.length > 0 && (
           <div className="SearchList">
             {FilteredCities.map((city, index) => (
               <h3
                 key={index}
                 className="CitySearchHint"
-                onClick={() => handleCityChange(city.name)} // Pass the city name to handleCityChange
+                onClick={() => handleCityChange(city.name)} 
               >
                 {city.name}
               </h3>

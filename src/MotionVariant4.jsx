@@ -5,7 +5,7 @@ export const FadeInType4 = (direction, delay) => {
             x: direction === 'right' ? 50 : direction === 'left' ? -50 : 0,
             opacity: 0,
             scale: 0,
-            rotate: 180,
+            rotate: 15,
         },
 
         show: {

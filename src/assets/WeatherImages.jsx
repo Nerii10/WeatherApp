@@ -48,10 +48,6 @@ export function WeatherImages({ WeatherInfo, Hour, error}) {
       <motion.div
         className="WeatherAditionalIcons"
         key={WeatherInfo ? WeatherInfo.name : ""}
-        variants={FadeInType4("down", 0)}
-        initial="hidden"
-        whileInView="show"
-        viewport={{ once: true }}
       >
       </motion.div>
     )}
