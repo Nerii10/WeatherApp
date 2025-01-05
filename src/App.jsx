@@ -12,9 +12,10 @@ function App() {
 
   const CurrentDate = new Date();
   const OffsetInSeconds = weatherData?.timezone || 0; 
-  const LocalTime = new Date(CurrentDate.getTime() + OffsetInSeconds * 1000);
-  const Hour = LocalTime.getHours();
-  const Minutes = LocalTime.getMinutes();
+  const UTCDate = new Date(CurrentDate.getTime() + CurrentDate.getTimezoneOffset()  * 1000); 
+  const LocalTime = new Date(UTCDate.getTime() + OffsetInSeconds * 1000);
+  const Hour = LocalTime.getUTCHours();
+  const Minutes = LocalTime.getUTCMinutes();
   const FullTime = `${Hour.toString().padStart(2, '0')}:${Minutes.toString().padStart(2, '0')}`;
   
 
@@ -29,41 +30,39 @@ function App() {
 
       const description = weatherData.weather[0].description.toLowerCase();
       if (description.includes("clear")) {
-        if (Hour < 14) {
+        if (Hour >= 3 && Hour < 14) {
           document.body.style.backgroundColor = "#1990ff"; 
-        } else if (Hour >= 14 && Hour <= 18) {
+        } else if (Hour >= 14 && Hour < 18) {
           document.body.style.backgroundColor = "#004a8f";
         } else {
           document.body.style.backgroundColor = "#030e24"; 
         }
-        
       } else if (description.includes("rain")) {
-        if (Hour < 14) {
+        if (Hour >= 3 && Hour < 14) {
           document.body.style.backgroundColor = "#add1ff"; 
-        } else if (Hour >= 14 && Hour <= 18) {
+        } else if (Hour >= 14 && Hour < 18) {
           document.body.style.backgroundColor = "#668cbd"; 
         } else {
           document.body.style.backgroundColor = "#405e85";  
         }
-
       } else if (description.includes("cloudy") || description.includes("clouds")) {
-        if (Hour < 14) {
+        if (Hour >= 3 && Hour < 14) {
           document.body.style.backgroundColor = "#9e9e9e"; 
-        } else if (Hour >= 14 && Hour <= 18) {
+        } else if (Hour >= 14 && Hour < 18) {
           document.body.style.backgroundColor = "#616161"; 
         } else {
           document.body.style.backgroundColor = "#262626"; 
         }
-
       } else if (description.includes("snow")) {
-
-        if (Hour < 14) {
+        if (Hour >= 3 && Hour < 14) {
           document.body.style.backgroundColor = "#c2e2ff";
-        } else if (Hour >= 14 && Hour <= 18) {
+        } else if (Hour >= 14 && Hour < 18) {
           document.body.style.backgroundColor = "#718fab"; 
         } else {
           document.body.style.backgroundColor = "#3e566b"; 
         }
+      
+      
 
 
           

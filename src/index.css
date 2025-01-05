@@ -174,7 +174,7 @@ li{
   padding-inline: 20px;
   display: flex;
   justify-content: left;
-  height: 100px;
+  height: 130px;
   filter:drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.3))
 }
 .Data{
