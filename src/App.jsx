@@ -62,7 +62,7 @@ function App() {
           document.body.style.backgroundColor = "#3e566b"; 
         }
       }
-        else if (description.includes("mist")) {
+        else if (description.includes("mist") || description.includes("smoke")  || description.includes("fog")) {
           if (Hour >= 3 && Hour < 14) {
             document.body.style.backgroundColor = "#9e9e9e"; 
           } else if (Hour >= 14 && Hour < 18) {
