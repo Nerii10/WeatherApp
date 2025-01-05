@@ -17,7 +17,7 @@ body {
   transition:  0s ease;
   transition-property: background-color;
   min-width: 320px;
-  min-height: 100vh;
+  height: 100lvh;
   color: #333; 
   background-color: #091f5056;
   background-size: 500px;
@@ -68,17 +68,18 @@ li{
 
 .WeatherAditionalIcons{
   z-index: -2;
+    align-items: center;
   padding-inline: 20px;
+  height: 130px;
   display: flex;
   justify-content: center;
-  height: 130px;
-  filter:drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.3))
+  filter:drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.3))
 }
 
 .WeatherIcon{
-  position: absolute;
-
+  float: right;
   width: 150px;
+  height: 150px;
 }
 
 .SearchMenu {
@@ -169,14 +170,7 @@ li{
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.205);
 }
-.WeatherAditionalIcons{
-  z-index: -2;
-  padding-inline: 20px;
-  display: flex;
-  justify-content: left;
-  height: 130px;
-  filter:drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.3))
-}
+
 .Data{
   width: fit-content;
   border-radius: 30px;
@@ -207,6 +201,15 @@ li{
 
 @media only screen and (max-width:600px)
 {
+  .WeatherAditionalIcons{
+    z-index: -2;
+    padding-inline: 20px;
+    height: 130px;
+    align-items: center;
+    display: flex;
+    justify-content: left;
+    filter:drop-shadow(2px 2px 3px rgba(0, 0, 0, 0.3))
+  }
   .DataContainer {
     display: flex; 
     flex-direction: column;

@@ -61,7 +61,15 @@ function App() {
         } else {
           document.body.style.backgroundColor = "#3e566b"; 
         }
-      
+      }
+        else if (description.includes("mist")) {
+          if (Hour >= 3 && Hour < 14) {
+            document.body.style.backgroundColor = "#9e9e9e"; 
+          } else if (Hour >= 14 && Hour < 18) {
+            document.body.style.backgroundColor = "#616161"; 
+          } else {
+            document.body.style.backgroundColor = "#262626"; 
+          }
       
 
 

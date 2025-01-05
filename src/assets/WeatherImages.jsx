@@ -9,14 +9,14 @@ export function WeatherImages({ WeatherInfo, Hour, error}) {
     {WeatherInfo && !error ? (
       <motion.div
         className="WeatherAditionalIcons"
+        
+      >
+        <motion.img
         key={WeatherInfo.name}
         variants={FadeInType4("down", 0)}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true }}
-      >
-        {/* Wybór odpowiedniego obrazka na podstawie warunków */}
-        <img
   src={
     Desc.includes("clear")
       ? Hour >= 18 || Hour < 3
@@ -31,7 +31,9 @@ export function WeatherImages({ WeatherInfo, Hour, error}) {
         ? "/WeatherApp/SnowflakeNight.png"
         : "/WeatherApp/SnowflakeDay.png"
       : Desc.includes("haze") || Desc.includes("mist")
-      ? "/WeatherApp/Mist.png"
+      ? Hour >= 18 || Hour < 3
+      ? "/WeatherApp/MistNight.png"
+      : "/WeatherApp/MistDay.png"
       : Desc.includes("rain")
       ? Hour >= 18 || Hour < 3
         ? "/WeatherApp/RainNight.png"
@@ -51,7 +53,6 @@ export function WeatherImages({ WeatherInfo, Hour, error}) {
         whileInView="show"
         viewport={{ once: true }}
       >
-        {/* Pusty kontener w przypadku błędu lub braku danych */}
       </motion.div>
     )}
   </>
