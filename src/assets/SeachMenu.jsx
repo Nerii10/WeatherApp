@@ -44,8 +44,12 @@ function SearchMenu({ setWeatherData, setError, setInputValue, inputValue }) {
   };
   
   const handleKeyDown = (event) => {
-    if (event.key === "Enter" && FilteredCities.length > 0) {
-      handleCityChange(FilteredCities[0].name);  // Select the first city if Enter is pressed
+    if (event.key === "Enter" ) {
+      if(FilteredCities.length > 0)
+      {
+        handleCityChange(FilteredCities[0].name);     
+      } else {handleCityChange(inputValue)}
+    
     }
   };
   

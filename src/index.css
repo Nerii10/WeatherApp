@@ -26,6 +26,8 @@ body {
 h1{
   color:white;
   width: fit-content;
+  margin: 0;
+
 }
 
 h2{
@@ -62,6 +64,21 @@ li{
 
 .icon{
   width: 80px;
+}
+
+.WeatherAditionalIcons{
+  z-index: -2;
+  padding-inline: 20px;
+  display: flex;
+  justify-content: center;
+  height: 130px;
+  filter:drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.3))
+}
+
+.WeatherIcon{
+  position: absolute;
+
+  width: 150px;
 }
 
 .SearchMenu {
@@ -152,7 +169,14 @@ li{
   cursor: pointer;
   background-color: rgba(255, 255, 255, 0.205);
 }
-
+.WeatherAditionalIcons{
+  z-index: -2;
+  padding-inline: 20px;
+  display: flex;
+  justify-content: left;
+  height: 100px;
+  filter:drop-shadow(5px 5px 3px rgba(0, 0, 0, 0.3))
+}
 .Data{
   width: fit-content;
   border-radius: 30px;
@@ -233,7 +257,7 @@ li{
   flex-direction: row;
   justify-content: center;
   position: fixed;
-  z-index: 20;
+  z-index: 24440;
   backdrop-filter: blur(15px); 
   -webkit-backdrop-filter: blur(15px); 
   }
@@ -244,8 +268,8 @@ li{
   }
   .Navbar
 {
-  width: 90%;
-  gap:10%;
+  width: 95%;
+  gap:5%;
   justify-content: center;
   align-items: center;
   display: flex;
