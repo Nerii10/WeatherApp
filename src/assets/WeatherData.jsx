@@ -23,14 +23,12 @@ function WeatherData({ weatherData, error, inputValue, hour}) {
         key={weatherData ? weatherData.name : 'no-data'}
         viewport={{ once: true }}
         >
-          
             <motion.h1
              variants={FadeInType1("down")} 
              initial="hidden"
              whileInView="show"
              viewport={{ once: true }}
              >{weatherData.name}</motion.h1>
-
 
             <motion.h2
              variants={FadeInType1("down")} 
@@ -49,7 +47,6 @@ function WeatherData({ weatherData, error, inputValue, hour}) {
             viewport={{ once: true }}
             style={{margin:0}}
             >{Math.floor(weatherData.main.temp)} °C</motion.h2>
-          
           <motion.div className="Data"
             variants={FadeInType1("left")} 
             initial="hidden"
