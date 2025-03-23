@@ -22,8 +22,8 @@ function App() {
   const [CurrentHour, setCurrentHour] = useState(0)
   const [Error, setError] = useState(0)
 
-  const [BackgroundColor1,setBackgroundColor1] = useState("rgb(0, 170, 255)")
-  const [BackgroundColor2,setBackgroundColor2] = useState("rgb(24, 33, 80)")
+  const [BackgroundColor1,setBackgroundColor1] = useState("rgb(24, 178, 255)")
+  const [BackgroundColor2,setBackgroundColor2] = useState("rgb(149, 183, 205)")
 
   const CurrentDate = new Date();
   
@@ -87,7 +87,7 @@ function App() {
 
         <div style={{height:"20px"}}></div>
       
-        <h1 style={{fontSize:"25px"}}>Discover the weather</h1>
+        <h1 style={{fontSize:"25px"}}>Weather</h1>
         <BackgroundColorChange time={WeatherData?.TimeLocal} WeatherData={WeatherData} setBackgroundColor1={setBackgroundColor1} setBackgroundColor2={setBackgroundColor2}/>
 
         <Searchbar setForecastHourlyData={setForecastHourlyData} setWeatherData={setWeatherData} setError={setError}/> 
@@ -153,7 +153,7 @@ function App() {
           </motion.div >
           : 
           <>
-            <motion.div style={{position:'relative', width:"100%",height:'100vh'}}
+            <motion.div style={{position:'relative', width:"100%",height:'90vh'}}
              initial={{opacity:0, y:50}}
              animate={{opacity:1,y:0}}
              key={WeatherData.name}
@@ -165,7 +165,7 @@ function App() {
             <div style={{display:'flex', flexDirection:'row', gap:'20px', justifyContent:'center',alignItems:'center'}}>
                 <Cloud size={50} style={{flexShrink:0}}></Cloud>
                 <div>
-                  <h1>Let's start checking</h1>
+                  <h1>Let's discover</h1>
                 </div>
               </div>
               <p style={{position:'absolute',bottom:'150px',width:'100%', display:'flex',justifyContent:'center'}}>Not every city is on the list.</p>

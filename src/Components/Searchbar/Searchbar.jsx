@@ -78,6 +78,7 @@ export default function Searchbar({setForecastHourlyData, setForecastDailyData, 
                 </div>
                 
                 <motion.input type="submit" className="Search-Input-Button" value={"Search"} 
+                style={{color:"gray"}}
                 whileTap={{scale:0.9}}
                 whileHover={{scale:1.1}}
                 />
