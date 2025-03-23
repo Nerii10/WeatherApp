@@ -1,0 +1,37 @@
+.root {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgba(255, 255, 255, 0.87);
+  font-synthesis: none;
+  width: 100%;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  display: flex;
+  justify-content: center;
+}
+
+.MainContainer{
+  width: 80%;
+}
+
+body, html {
+  margin: 0;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+html {
+  background: linear-gradient(to bottom, rgb(0, 137, 241), rgb(255, 220, 125));
+  background-attachment: fixed;
+  background-color: black;
+}
+
+*{
+  --ForecastBorder: 1px rgba(255, 255, 255, 0.864) solid;
+  --ForecastBackground: rgba(18, 18, 18, 0.72);
+  --ForecastBackdropFilter: "blur(0px)";
+  --ForecastBorderRadius: 20px;
+}

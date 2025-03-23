@@ -1,0 +1,8 @@
+.Weather-Data-Container{
+    width: 100%;
+    height: 100%;
+    background-color: var(--ForecastBackground);
+    padding: 20px;
+    border-radius: var(--ForecastBorderRadius);
+    border: var(--ForecastBorder)
+}

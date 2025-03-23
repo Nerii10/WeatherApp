@@ -1,0 +1,45 @@
+.Search-Input-Text{
+    font-size: 16px;
+    text-transform: capitalize;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top:0;
+    box-sizing: border-box;
+    padding: 0px 35px;
+}
+
+.Search-Input-Button{
+    padding: 10px 30px;
+    font-size: 16px;
+    border-radius: 20px;
+    border:1px rgb(255, 255, 255) solid;
+    background-color: white;
+}
+
+.Search-Input-Text-Container{
+    position: relative;
+    width: 300px;
+    height: 40px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 20px;
+    overflow: hidden;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.Search-Input-Text-Icon{
+    position: absolute;
+    left: 10px;
+    pointer-events: none;
+    z-index: 1;
+    color:black;
+}
+
+.Search-Inputs-Container{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

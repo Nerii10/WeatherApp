@@ -1,0 +1,59 @@
+.weather-grid-input{
+    background-color: var(--ForecastBackground);
+    padding: 20px;
+    border-radius: var(--ForecastBorderRadius);
+    border: var(--ForecastBorder);
+    width: fit-content;
+    box-sizing: border-box;
+    padding: 30px;    
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow: hidden;
+    flex-wrap: nowrap;
+}
+
+.weather-grid-input-group{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: nowrap;
+}
+
+.weather-grid-input-group .weather-grid-input{
+    width: 50%;
+}
+
+.weather-grid{
+    display: flex;
+    gap:20px;
+    flex-direction: column;
+}
+
+.weather-grid-input-main{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    gap:10px;
+    border-bottom: 1px rgba(255, 255, 255, 0.317) solid;
+}
+
+.weather-grid-input-main h2{
+   margin: 10px 0px;
+   flex-shrink: 0;
+}
+
+.weather-grid-input-desc{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.weather-grid-input-desc p{
+    margin: 0;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
