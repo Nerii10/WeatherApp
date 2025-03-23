@@ -12,26 +12,23 @@
 }
 
 .MainContainer{
-  width: 80%;
+  width: 90%;
+  max-width: 800px;
 }
 
 body, html {
   margin: 0;
   width: 100%;
   min-height: 100vh;
-  display: flex;
-  justify-content: center;
 }
 
 html {
-  background: linear-gradient(to bottom, rgb(0, 137, 241), rgb(255, 220, 125));
-  background-attachment: fixed;
   background-color: black;
 }
 
 *{
-  --ForecastBorder: 1px rgba(255, 255, 255, 0.864) solid;
+  --ForecastBorder: 1px rgba(255, 255, 255, 0.442) solid;
   --ForecastBackground: rgba(18, 18, 18, 0.72);
-  --ForecastBackdropFilter: "blur(0px)";
+  --ForecastBackdropFilter: blur(2px);
   --ForecastBorderRadius: 20px;
 }

@@ -27,8 +27,6 @@ export default function CurrentWeather({WeatherData}){
         <>
             {WeatherData && 
                 <>
-                <hr></hr>
-            
                     <div className="weather-grid">
                         <div className="weather-grid-input-group">
                                 <div className="weather-grid-input">
@@ -103,24 +101,21 @@ export default function CurrentWeather({WeatherData}){
                                     <div className="weather-grid-input-desc" style={{width:"200px",height:"200px", flexShrink:0}}>
                                         <SolarCycleGraph WeatherData={WeatherData} />
                                     </div>
-                                    <div style={{width:"fit-content", display:'flex', flexDirection:'column',gap:"50px"}}>
+                                    <div style={{width:"fit-content", display:'flex', flexDirection:'column',gap:"30px"}}>
                                         <p><Sunrise/> {formatTime(WeatherData?.sys?.sunrise)}</p>
                                         <p><Sunset/>  {formatTime(WeatherData?.sys?.sunset)}</p>
+                                        <p><Sun/> Daytime{" "}
+                                            {Math.floor((WeatherData?.sys?.sunset - WeatherData?.sys?.sunrise) / 3600)}:
+                                            {Math.floor(((WeatherData?.sys?.sunset - WeatherData?.sys?.sunrise) % 3600) / 60)}h
+                                        </p>
+
+
                                     </div>
                                 </div>
 
 
                             </div>
                     </div>
-                       
-
-
-                <hr></hr>
-
-                <h1>OLD</h1>
-                <p>Sunrise: {formatTime(WeatherData?.sys.sunrise)}</p>
-                <p>Sunset: {formatTime(WeatherData?.sys.sunset)}</p>
-
                 </>
             }
         </>

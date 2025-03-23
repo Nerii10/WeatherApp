@@ -14,6 +14,8 @@ export default function IconMapper({Weather}){
                     return "🌧️";
                 case "Clear":
                     return "☀️"; 
+                case "Snow":
+                    return "❅";
                 default:
                     return `🌍 ${Weather}`; 
                 }

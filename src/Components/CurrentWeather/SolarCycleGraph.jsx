@@ -72,20 +72,19 @@ export default function SolarCycleGraph({ WeatherData }) {
                     cy={calculateY(DayProgress)}
                     r={5}
                     floodColor={"red"}
-                    fill={DayProgress >= 25 && DayProgress <= 75
-                        ? "rgb(255, 196, 0)"
+                    fill={DayProgress >= 25 && DayProgress <= 74
+                        ? "rgb(255, 200, 19)"
                         : DayProgress < 25
-                        ? "rgb(54, 107, 168)" 
-                        : "rgb(92, 48, 123)"}
+                        ? "rgb(39, 83, 134)" 
+                        : "rgb(115, 49, 176)"}
                       
                     />
                 }
 
-                <text x={25} y={40} textAnchor="middle" fontSize="6" fill="white">{Sunrise}</text>
-                <text x={75} y={40} textAnchor="middle" fontSize="6" fill="white">{Sunset}</text>
+                <text x={20} y={30} textAnchor="middle" fontSize="6" fill="white">{Sunrise}</text>
+                <text x={80} y={30} textAnchor="middle" fontSize="6" fill="white">{Sunset}</text>
 
             </svg>
-
         </div>
     );
 }

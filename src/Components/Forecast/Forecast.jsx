@@ -11,7 +11,7 @@ export default function Forecast({ForecastHourlyData}) {
     
     const date = new Date();
     const timestampNow = date.getTime(); 
-    const timestamp24hLater = timestampNow + 48 * 60 * 60 * 1000; 
+    const timestamp24hLater = timestampNow + 60 * 60 * 60 * 1000; 
 
     const FilteredForecast = Forecast?.filter((element) => {
         const forecastTimestamp = new Date(element.dt_txt).getTime();
@@ -73,10 +73,13 @@ export default function Forecast({ForecastHourlyData}) {
                             <>
                                 <motion.div
                                 className="Hourly-Forecast-Input"
+                                initial={{opacity:0}}
+                                animate={{opacity:1}}
+                                transition={{type:"spring", damping:23, delay: (0.1 * index) +0.5}}
                                 >
-                                    <p>{(new Date(element.dt_txt).getHours() % 12 || 12)}<span style={{fontSize:"14px"}}>{new Date(element.dt_txt).getHours() >= 12 ? "PM" : "AM"}</span></p>
-                                    <IconMapper Weather={element.weather[0].main} />
-                                    <p>{Math.round(element.main.temp)}°</p>
+                                    <p className="Hourly-Forecast-Input-Hours">{(new Date(element.dt_txt).getHours() % 12 || 12)}<span style={{fontSize:"14px"}}>{new Date(element.dt_txt).getHours() >= 12 ? "PM" : "AM"}</span></p>
+                                    <p className="Hourly-Forecast-Input-Icon"><IconMapper Weather={element.weather[0].main} /></p>
+                                    <p className="Hourly-Forecast-Input-Temp">{Math.round(element.main.temp)}°</p>
                                 </motion.div>
                             </>
                         )
@@ -94,12 +97,16 @@ export default function Forecast({ForecastHourlyData}) {
                     {DailyForecast?.map((element,index)=>{
                         const weeklyRange = Math.round(Weekdata.maxTemp) - Math.round(Weekdata.minTemp);
                         const marginLeftPercent = ((Math.round(element.minTemp) - Math.round(Weekdata.minTemp)) / weeklyRange) * 100;
-                        const widthPercent = ((Math.round(element.maxTemp) - Math.round(element.minTemp)) / weeklyRange) * 100;
+                        const widthPercent = ((((Math.round(element.maxTemp) - Math.round(element.minTemp)) == 0 ? 1 : (Math.round(element.maxTemp) - Math.round(element.minTemp))) / weeklyRange) * 100)
                         
                         return(
                             <>
 
-                                <div className="Daily-Forecast-Input">
+                                <motion.div className="Daily-Forecast-Input"
+                                 initial={{opacity:0}}
+                                 animate={{opacity:1}}
+                                 transition={{type:"spring", damping:23, delay: (0.1 * index) +0.6}}
+                                >
                                     <p className="Daily-Forecast-Input-Day">{new Date(element.date).toLocaleDateString("en-US", {weekday:"long"})}</p>
 
                                     <div className="Daily-Forecast-Input-Icon">
@@ -127,15 +134,11 @@ export default function Forecast({ForecastHourlyData}) {
 
                                         <p className="Daily-Forecast-Input-Max">{Math.round(element.maxTemp)}</p>
                                     </div>
-                                </div>
-                               
+                                </motion.div>
                             </>
                         )
                     })}
                 </motion.div>
-
-                {Weekdata?.maxTemp} weekmax
-                {Weekdata?.minTemp} weekmin
         </>
     )   
 }
