@@ -54,7 +54,7 @@ export default function Searchbar({setForecastHourlyData, setForecastDailyData, 
 
     return(   
     <>
-        <div style={{zIndex:1, position:'relative'}}>
+        <div style={{zIndex:3, position:'relative'}}>
             <form className="Search-Inputs-Container" onSubmit={(e) => { e.preventDefault(); DownloadCityData(FilteredCities.length != 0 ? FilteredCities[0].name : City); }}>
                 <div className="Search-Input-Text-Container">
                     <Search className="Search-Input-Text-Icon" style={{height:'100%'}}/>

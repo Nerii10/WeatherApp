@@ -101,23 +101,39 @@ export default function Forecast({ForecastHourlyData}) {
                         
                         return(
                             <>
-
+        
                                 <motion.div className="Daily-Forecast-Input"
+                                style={index == DailyForecast.length-1 && {border:"none"}}
                                  initial={{opacity:0}}
                                  animate={{opacity:1}}
                                  transition={{type:"spring", damping:23, delay: (0.1 * index) +0.6}}
                                 >
-                                    <p className="Daily-Forecast-Input-Day">{new Date(element.date).toLocaleDateString("en-US", {weekday:"long"})}</p>
+                                    <div style={{display:'flex',justifyContent:'start', alignItems:'center', width:"30%"}}>
+                                        <p style={{ margin: 0 }} className="Daily-Forecast-Input-Day">
+                                        {(() => {
+                                            const today = new Date();
+                                            const elementDate = new Date(element.date);
+                                            
+                                            if (elementDate.toDateString() === today.toDateString()) {
+                                            return "Today";
+                                            }
 
-                                    <div className="Daily-Forecast-Input-Icon">
-                                        <p> <IconMapper Weather={element.weather}/></p>
+                                            return elementDate.toLocaleDateString("en-US", { weekday: "long" }).slice(0, 3);
+                                        })()}
+                                        </p>
+
+
+                                        <div className="Daily-Forecast-Input-Icon">
+                                            <p style={{margin:0}}> <IconMapper Weather={element.weather}/></p>
+                                        </div>
                                     </div>
+                                    
 
 
 
 
                                     <div className="Daily-Forecast-Input-Temp">
-                                        <p className="Daily-Forecast-Input-Min">{Math.round(element.minTemp)}</p>
+                                        <p style={{margin:0}} className="Daily-Forecast-Input-Min">{Math.round(element.minTemp)}°</p>
 
                                         <div className="Daily-Forecast-Input-Range">
                                             <div 
@@ -129,12 +145,11 @@ export default function Forecast({ForecastHourlyData}) {
                                             >
                                             </div>
                                     </div>
-
-
-
-                                        <p className="Daily-Forecast-Input-Max">{Math.round(element.maxTemp)}</p>
+                                        <p className="Daily-Forecast-Input-Max">{Math.round(element.maxTemp)}°</p>
                                     </div>
+
                                 </motion.div>
+
                             </>
                         )
                     })}

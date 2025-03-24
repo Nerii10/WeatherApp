@@ -54,6 +54,22 @@ function App() {
     console.log(WeatherData)
   },[WeatherData])
 
+  function FormatTime(timestamp, timezoneOffset) {
+    if (!timestamp) return "N/A";
+    const date = new Date((timestamp + timezoneOffset) * 1000);
+    let hours = date.getUTCHours();
+    const minutes = date.getUTCMinutes();
+    return `${date.getTime()}`;
+  }
+
+  const Now = new Date(WeatherData?.dt * 1000 + WeatherData?.timezone * 1000);
+  const Sunrise = new Date(WeatherData?.sys?.sunrise * 1000 + WeatherData?.timezone * 1000); 
+  const Sunset = new Date(WeatherData?.sys?.sunset * 1000 + WeatherData?.timezone * 1000); 
+
+
+  const Day = Now >= Sunrise && Now <= Sunset ? 1 : 0;
+  console.log(Day)
+
   return (
     <>
 
@@ -102,24 +118,28 @@ function App() {
           animate={{opacity:1,y:0}}
           key={WeatherData.name}
           transition={{ duration: 1, ease: "easeOut", type:"spring", damping:23 }}
-
           >
-              <motion.div style={{display:'flex', justifyContent:"space-between",alignItems:'center'}}
-              initial={{x:20,opacity:0}}
-              animate={{x:0,opacity:1}}
+            <br></br>
+              <motion.div style={{display:'flex', justifyContent:"space-between",alignItems:'center',position:'sticky', top:"0px", zIndex:2, borderRadius:'var(--ForecastBorderRadius)', backgroundColor:"var(--ForecastBackground)", backdropFilter:"blur(10px)", border:"var(--ForecastBorder)", padding:"0px 20px"}}
+              initial={{y:20,opacity:0}}
+              animate={{y:0,opacity:1}}
               transition={{ duration: 1, ease: "easeOut", type:"spring", damping:23, delay:0.2 }}
               >
                   
-                  <div style={{display:'flex', justifyContent:"center", alignItems:'center', gap:"10px",height:'100px'}}>
-                    <p style={{fontSize:'50px', margin:0,flexShrink:0}}>
-                      {WeatherData ? <IconMapper Weather={WeatherData?.weather[0]?.main}/> :
-                      ""}
-                      </p>
-                    <h1 style={{margin:0}}>{WeatherData?.name}</h1>
+                  <div style={{display:'flex', justifyContent:"center", alignItems:'center', gap:"15px",height:'70px'}}>
+
+                    {WeatherData ? <IconMapper Weather={WeatherData?.weather[0]?.main} Day={Day}/> :
+                    ""}
+
+                    <h1 style={{margin:0,fontSize:"25px"}}>{Math.round(WeatherData?.main.temp)}°</h1>
+
+                    <h1 style={{margin:0,fontSize:"25px"}}>{WeatherData?.name}</h1>
+
                   </div>
               
-                  <h1>{WeatherData?.TimeUS}</h1> 
+                  <h1 style={{margin:0,fontSize:"25px"}}>{WeatherData?.TimeUS}</h1> 
               </motion.div>
+              <br></br>
             
             <motion.div
              initial={{y:50,opacity:0}}

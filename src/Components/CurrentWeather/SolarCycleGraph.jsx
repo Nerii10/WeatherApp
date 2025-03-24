@@ -17,6 +17,7 @@ export default function SolarCycleGraph({ WeatherData }) {
   useEffect(()=>{
     console.log((Mouse?.X-50)*-1/5)
   },[Mouse])
+  
   function FormatTime(timestamp, timezoneOffset) {
     if (!timestamp) return "N/A";
     const date = new Date((timestamp + timezoneOffset) * 1000);
@@ -87,7 +88,6 @@ export default function SolarCycleGraph({ WeatherData }) {
       
   return (
     <>
-        <p>test</p>
       <div
         style={{
           width: "100%",

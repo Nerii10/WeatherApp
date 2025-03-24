@@ -70,20 +70,24 @@
 
 .Daily-Forecast-Container{
     display: flex;
+    width: 100%;
+    background-color:  var(--ForecastBackground);
+    backdrop-filter: var(--ForecastBackdropFilter);
+    border: var(--ForecastBorder);
+    border-radius: var(--ForecastBorderRadius);
+    box-sizing: border-box;
+    padding: 25px 0px;
     align-items: center;
     gap: 20px;
     flex-direction: column;
 }
 
 .Daily-Forecast-Input{
-    background-color:  var(--ForecastBackground);
-    backdrop-filter: var(--ForecastBackdropFilter);
-    border: var(--ForecastBorder);
-    border-radius: var(--ForecastBorderRadius);
-    width: 100%;
+    width: 90%;
     display: flex;
     box-sizing: border-box;
-    padding: 0px 20px;
+    border-bottom: 1px rgba(255, 255, 255, 0.396) solid;
+    height: 50px;
     align-items: center;
 }
 
@@ -101,11 +105,11 @@
     background: linear-gradient(to right, rgb(40, 198, 237) ,rgb(255, 208, 0));
 }
 
-.Daily-Forecast-Input-Day{
+.Daily-Forecast-Input-Day {
     width: fit-content;
-    font-size: 23px;
+    font-size: 20px;
     font-weight: 500;
-    width: 40%;
+    width: 60px;
 }
 
 .Daily-Forecast-Input-Icon{
@@ -113,19 +117,23 @@
 }
 
 .Daily-Forecast-Input-Min{
-    width: fit-content;
+    width: 20px;
 }
 
 .Daily-Forecast-Input-Max{
-    width: fit-content;
+    width: 20px;
 }
 
 .Daily-Forecast-Input-Temp{
+    flex-shrink: 0;
     display: flex;
-    width:  50%;
+    width:  70%;
     justify-content: center;
     gap:5px;
+    box-sizing: border-box;
+    padding-right: 20px;
     align-items: center;
     display: flex;
     justify-content: end;
 }
+

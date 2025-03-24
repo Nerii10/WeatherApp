@@ -32,3 +32,7 @@ html {
   --ForecastBackdropFilter: blur(2px);
   --ForecastBorderRadius: 20px;
 }
+
+.icon{
+  width: 50px;
+}
