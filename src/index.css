@@ -36,3 +36,31 @@ html {
 .icon{
   width: 50px;
 }
+
+.h1-app-sticky {
+  margin: 0;
+  font-size: 23px;
+  text-emphasis: inherit;
+  white-space: nowrap;     
+  overflow: hidden;          
+}
+@media only screen and (max-width:600px) {
+  .h1-app-sticky{
+    margin: 0;
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width:400px) {
+  .h1-app-sticky{
+    margin: 0;
+    font-size: 15px;
+  }
+}
+
+@media only screen and (max-width:350px) {
+  .h1-app-sticky{
+    margin: 0;
+    font-size: 10px;
+  }
+}

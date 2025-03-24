@@ -49,9 +49,19 @@ function App() {
       }));
     }
   }, [WeatherData.coord]);
+
+  function TimeToLocalTime(timestamp,timezone){
+    if (timezone !== undefined && timezone !== null) {
+      const OffsetInSeconds = timezone; 
+      const UTCDate = new Date(timestamp + new Date().getTimezoneOffset() * 60 * 1000); 
+      const LocalTime = new Date(UTCDate.getTime() + OffsetInSeconds * 1000);
+      const Hour = LocalTime.getHours();
+      const Minutes = LocalTime.getMinutes();
+      return `${Hour.toString().padStart(2, '0')}:${Minutes.toString().padStart(2, '0')}`;
+    }
+  }
   
   useEffect(()=>{
-    console.log(WeatherData)
   },[WeatherData])
 
   function FormatTime(timestamp, timezoneOffset) {
@@ -62,13 +72,15 @@ function App() {
     return `${date.getTime()}`;
   }
 
-  const Now = new Date(WeatherData?.dt * 1000 + WeatherData?.timezone * 1000);
-  const Sunrise = new Date(WeatherData?.sys?.sunrise * 1000 + WeatherData?.timezone * 1000); 
-  const Sunset = new Date(WeatherData?.sys?.sunset * 1000 + WeatherData?.timezone * 1000); 
 
+  
+  const Now = TimeToLocalTime(WeatherData?.dt*1000, WeatherData?.timezone)
+  const Sunrise = TimeToLocalTime(WeatherData?.sys?.sunrise*1000, WeatherData?.timezone)
+  const Sunset = TimeToLocalTime(WeatherData?.sys?.sunset*1000, WeatherData?.timezone)
+  
+  const BackgroundTime = {Now,Sunrise,Sunset}
 
   const Day = Now >= Sunrise && Now <= Sunset ? 1 : 0;
-  console.log(Day)
 
   return (
     <>
@@ -103,8 +115,8 @@ function App() {
 
         <div style={{height:"20px"}}></div>
       
-        <h1 style={{fontSize:"25px"}}>Weather</h1>
-        <BackgroundColorChange time={WeatherData?.TimeLocal} WeatherData={WeatherData} setBackgroundColor1={setBackgroundColor1} setBackgroundColor2={setBackgroundColor2}/>
+        <h1 style={{fontSize:"25px"}}>Discorver weather</h1>
+        <BackgroundColorChange time={BackgroundTime} WeatherData={WeatherData} setBackgroundColor1={setBackgroundColor1} setBackgroundColor2={setBackgroundColor2}/>
 
         <Searchbar setForecastHourlyData={setForecastHourlyData} setWeatherData={setWeatherData} setError={setError}/> 
        
@@ -131,13 +143,13 @@ function App() {
                     {WeatherData ? <IconMapper Weather={WeatherData?.weather[0]?.main} Day={Day}/> :
                     ""}
 
-                    <h1 style={{margin:0,fontSize:"25px"}}>{Math.round(WeatherData?.main.temp)}°</h1>
+                    <h1 className='h1-app-sticky'>{Math.round(WeatherData?.main.temp)}°</h1>
 
-                    <h1 style={{margin:0,fontSize:"25px"}}>{WeatherData?.name}</h1>
+                    <h1 className='h1-app-sticky'>{WeatherData?.name}</h1>
 
                   </div>
               
-                  <h1 style={{margin:0,fontSize:"25px"}}>{WeatherData?.TimeUS}</h1> 
+                  <h1  className='h1-app-sticky'>{WeatherData?.TimeUS}</h1> 
               </motion.div>
               <br></br>
             
