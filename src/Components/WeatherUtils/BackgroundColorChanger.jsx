@@ -11,27 +11,35 @@ export default function BackgroundColorChange({ time, WeatherData, setBackground
     twilight: ["rgb(70, 61, 139)", "rgb(255, 38, 0)"], 
     overcast: ["rgb(169, 169, 169)", "rgb(128, 128, 128)"], 
     storm: ["rgb(0, 14, 21)", "rgb(47, 79, 79)"], 
-    sunset: ["rgb(255, 140, 0)", "rgb(255, 69, 0)"]
+    sunset: ["rgb(255, 140, 0)", "rgb(255, 69, 0)"],
+    default: ["rgb(24, 178, 255)","rgb(149, 183, 205)"]
   };
 
   const convertToMinutes = (time) => {
     const [hours, minutes] = time.split(":");
     return parseInt(hours) * 60 + parseInt(minutes);
   };
+  
+  let newColors = [];
+
 
   useEffect(() => {
-    if (!time || !time.Now || !time.Sunrise || !time.Sunset) return; // Zabezpieczenie, aby nie było błędów, gdy `time` lub inne dane są undefined
+    if (!time || !time.Now || !time.Sunrise || !time.Sunset){ 
+      newColors = Colors.default;
+      setBackgroundColor1(newColors[0]);
+      setBackgroundColor2(newColors[1]);
+      return
+    };
 
     const { Now, Sunrise, Sunset } = time;
 
-    const currentHour = new Date().getHours(); // Aktualna godzina w systemie 24-godzinnym
+    const currentHour = new Date().getHours(); 
     const WeatherCondition = WeatherData && WeatherData?.weather[0]?.main;
 
     const nowInMinutes = convertToMinutes(Now);
     const sunriseInMinutes = convertToMinutes(Sunrise);
     const sunsetInMinutes = convertToMinutes(Sunset);
 
-    let newColors = [];
 
     console.log(Math.abs(sunriseInMinutes - nowInMinutes), "Min do wschodu")
     console.log(Math.abs(sunsetInMinutes - nowInMinutes), "Min do zachodu")
@@ -43,7 +51,7 @@ export default function BackgroundColorChange({ time, WeatherData, setBackground
       if (Math.abs(sunriseInMinutes - nowInMinutes) < 60) { 
         newColors = Colors.sunrise; 
       } 
-      else if (Math.abs(sunsetInMinutes - nowInMinutes) < 60) {
+      else if (Math.abs(sunsetInMinutes - nowInMinutes) <= 60) {
         newColors = Colors.dusk; 
       } 
       else if (nowInMinutes < sunriseInMinutes) {
