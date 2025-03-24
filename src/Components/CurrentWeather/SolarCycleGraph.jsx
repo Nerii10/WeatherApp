@@ -87,6 +87,7 @@ export default function SolarCycleGraph({ WeatherData }) {
       
   return (
     <>
+        <p>test</p>
       <div
         style={{
           width: "100%",
@@ -108,6 +109,13 @@ export default function SolarCycleGraph({ WeatherData }) {
             setMouse({X:xPercent,Y:yPercent})
             }}
             onMouseLeave={()=>{setMouse({X:0,Y:0})}}
+        onTouchMove= {(event) => {
+          const rect = event.currentTarget.getBoundingClientRect();
+          const xPercent = ((event.clientX - rect.left) / rect.width) * 100;
+          const yPercent = ((event.clientY - rect.top) / rect.height) * 100;
+          setMouse({X:xPercent,Y:yPercent})
+          }}  
+        onTouchEnd={()=>{setMouse({X:0,Y:0})}}
       >
 
         <svg viewBox="0 0 100 100" width="100%" height="100%"
@@ -163,7 +171,6 @@ export default function SolarCycleGraph({ WeatherData }) {
             {FormatTimeUS(WeatherData?.sys?.sunset, WeatherData?.timezone ?? 0)}
         </text>
         </svg>
-
         <motion.div 
         style={{
             position: "absolute",
