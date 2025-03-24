@@ -8,20 +8,19 @@ import { ThermometerSun, Wind, Droplet, Sun, Sunset, Sunrise, Minus} from "lucid
 
 
 export default function CurrentWeather({WeatherData}){
-
-    const formatTime = (timestamp) => {
-        const date = new Date(timestamp * 1000); 
-        let hours = date.getHours();
-        const minutes = date.getMinutes();
-        
-        const ampm = hours >= 12 ? "PM" : "AM";
-        
-        hours = hours % 12;
-        hours = hours ? hours : 12; 
-        
-        return `${hours < 10 ? '0' + hours : hours}:${minutes < 10 ? '0' + minutes : minutes} ${ampm}`;
-    };
     
+    
+  function formatTime(timestamp) {
+    if (!timestamp) return "N/A";
+    const date = new Date((timestamp + WeatherData?.timezone) * 1000);
+    let hours = date.getUTCHours();
+    const minutes = date.getUTCMinutes();
+
+    const ampm = hours < 12  ? "am" : "pm"
+    hours = hours%12 || 12
+
+    return `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}${ampm}`;
+  }
 
     return(
         <>
