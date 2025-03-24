@@ -129,7 +129,9 @@ export default function SolarCycleGraph({ WeatherData }) {
             <stop offset="0%" stopColor="rgb(255, 255, 255)" />
             <stop offset="2%" stopColor="rgb(123, 123, 123)" />
             </linearGradient>
+
         </defs>
+        
         <path
             d={`M0 70 ${graphsunrise} 50, ${graphsunset} 50, 100 70`}
             stroke="url(#curveGradient)"
@@ -150,20 +152,32 @@ export default function SolarCycleGraph({ WeatherData }) {
             stroke="white"
             strokeWidth="1"
         />
-        {WeatherData?.TimeLocal && (
-            <circle
+
+      <defs>
+      <mask id="colorMask">
+      <rect x="0" y="0" width="200" height="200" fill="white" />
+      <rect x="0" y="50" width="100" height="50" fill="gray" />
+    </mask>
+
+      </defs>
+
+
+      {WeatherData?.TimeLocal && (
+          <circle
             cx={DayProgress}
             cy={circleY}
             r={5}
             fill={
-                DayProgress >= graphsunrise && DayProgress <= graphsunset
-                ? "rgb(255, 200, 19)"
+              DayProgress >= graphsunrise && DayProgress <= graphsunset
+                ? "rgb(255, 176, 19)"
                 : DayProgress < graphsunrise
-                ? "rgb(39, 83, 134)"
-                : "rgb(115, 49, 176)"
+                ? "rgb(113, 175, 245)"
+                : "rgb(92, 38, 178)"
             }
-            />
+            mask="url(#colorMask)" 
+          />
         )}
+
         <text x="20" y="30" textAnchor="middle" fontSize="6" fill="white">
             {FormatTimeUS(WeatherData?.sys?.sunrise, WeatherData?.timezone ?? 0)}
         </text>

@@ -27,10 +27,10 @@ html {
 }
 
 *{
-  --ForecastBorder: 1px rgba(255, 255, 255, 0.442) solid;
-  --ForecastBackground: rgba(18, 18, 18, 0.72);
-  --ForecastBackdropFilter: blur(2px);
-  --ForecastBorderRadius: 20px;
+  --ForecastBorder: 1px rgba(255, 255, 255, 0.406) solid;
+  --ForecastBackground: rgba(18, 18, 18, 0.464);
+  --ForecastBackdropFilter: blur(0px);
+  --ForecastBorderRadius: 25px;
 }
 
 .icon{

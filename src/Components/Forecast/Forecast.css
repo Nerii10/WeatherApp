@@ -3,26 +3,28 @@
     width: 100%;
     backdrop-filter: var(--ForecastBackdropFilter);
     overflow-x: auto;
+    box-sizing: border-box;
+    padding-left: 15px;
     background-color: var(--ForecastBackground);
     border-radius: var(--ForecastBorderRadius);
-    box-sizing: border-box;
     border: var(--ForecastBorder)
 }
 
 .Hourly-Forecast{
     display: flex;
     align-items: center;
-    gap: 1px;
+    gap: 15px;
 }
 
 .Hourly-Forecast-Input{
     flex-shrink: 0;
     width: fit-content;
     padding: 20px 10px;
+    width: 40px;
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 5px;
+    gap: 2px;
     flex-direction: column;
 }
 
@@ -38,13 +40,10 @@
 .Hourly-Forecast-Input-Hours{
     font-size: 20px;
     font-weight: 900;
-    background-color: rgba(72, 72, 72, 0.177);
-    border: var(--ForecastBorder);
     border-radius: 20px;
     height: fit-content;
     height: 30px;
     box-sizing: border-box;
-    width: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -53,10 +52,8 @@
 
 .Hourly-Forecast-Input-Temp{
     font-size: 20px;
-    color: rgb(177, 232, 237);
+    color: rgb(255, 255, 255);
     font-weight: 900;
-    background-color: rgba(72, 72, 72, 0.177);
-    border: var(--ForecastBorder);
     border-radius: 20px;
     height: fit-content;
     height: 30px;

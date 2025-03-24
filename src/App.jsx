@@ -21,7 +21,7 @@ function App() {
   const [WeatherData, setWeatherData] = useState(0)
   const [CurrentHour, setCurrentHour] = useState(0)
   const [Error, setError] = useState(0)
-
+  const [ScrollYPx, setScrollYPx] = useState(0)
   const [BackgroundColor1,setBackgroundColor1] = useState("rgb(24, 178, 255)")
   const [BackgroundColor2,setBackgroundColor2] = useState("rgb(149, 183, 205)")
 
@@ -50,6 +50,19 @@ function App() {
     }
   }, [WeatherData.coord]);
 
+  useEffect(()=>{
+  },[WeatherData])
+
+  useEffect(()=>{
+    addEventListener("scroll", ()=>{
+      setScrollYPx(window.scrollY)
+    })
+  },[])
+
+  useEffect(()=>{
+    console.log(ScrollYPx)
+  },[ScrollYPx])
+
   function TimeToLocalTime(timestamp,timezone){
     if (timezone !== undefined && timezone !== null) {
       const OffsetInSeconds = timezone; 
@@ -61,9 +74,7 @@ function App() {
     }
   }
   
-  useEffect(()=>{
-  },[WeatherData])
-
+  
   function FormatTime(timestamp, timezoneOffset) {
     if (!timestamp) return "N/A";
     const date = new Date((timestamp + timezoneOffset) * 1000);
@@ -115,7 +126,7 @@ function App() {
 
         <div style={{height:"20px"}}></div>
       
-        <h1 style={{fontSize:"25px"}}>Discorver weather</h1>
+        <h1 style={{fontSize:"25px", display:'flex', gap: "10px", alignItems:'center'}}> <img src="/WeatherApp/icons/weather-app.png" style={{width:'50px'}}></img> Discover weather</h1>
         <BackgroundColorChange time={BackgroundTime} WeatherData={WeatherData} setBackgroundColor1={setBackgroundColor1} setBackgroundColor2={setBackgroundColor2}/>
 
         <Searchbar setForecastHourlyData={setForecastHourlyData} setWeatherData={setWeatherData} setError={setError}/> 
@@ -132,10 +143,10 @@ function App() {
           transition={{ duration: 1, ease: "easeOut", type:"spring", damping:23 }}
           >
             <br></br>
-              <motion.div style={{display:'flex', justifyContent:"space-between",alignItems:'center',position:'sticky', top:"0px", zIndex:2, borderRadius:'var(--ForecastBorderRadius)', backgroundColor:"var(--ForecastBackground)", backdropFilter:"blur(10px)", border:"var(--ForecastBorder)", padding:"0px 20px"}}
-              initial={{y:20,opacity:0}}
-              animate={{y:0,opacity:1}}
-              transition={{ duration: 1, ease: "easeOut", type:"spring", damping:23, delay:0.2 }}
+              <motion.div style={{display:'flex', justifyContent:"space-between",alignItems:'center',position:'sticky', top:"5px", zIndex:2, padding:"0px 20px"}}
+              initial={{y:20,opacity:0,borderRadius:'var(--ForecastBorderRadius)',}}
+              animate={ScrollYPx > 175 ? {y:0,opacity:1, borderRadius:'var(--ForecastBorderRadius)', backgroundColor:"var(--ForecastBackground)", backdropFilter:"blur(10px)", border:"var(--ForecastBorder)",scale:0.9} : {y:5,opacity:1, borderRadius:'var(--ForecastBorderRadius)', backgroundColor:"rgba(0,0,0,0)", backdropFilter:"blur(0px)", border:"1px rgba(255,255,255,0) solid", scale:1}}
+              transition={{ duration: 0.35, ease: "circOut", type:"tween", damping:23}}
               >
                   
                   <div style={{display:'flex', justifyContent:"center", alignItems:'center', gap:"15px",height:'70px'}}>
@@ -178,14 +189,12 @@ function App() {
             <br></br>
             <br></br>
             <br></br>
-            <br></br>
-            <br></br>
             {/* <TEST Data={WeatherData} /> */}
            
           </motion.div >
           : 
           <>
-            <motion.div style={{position:'relative', width:"100%",height:'90vh'}}
+            <motion.div style={{position:'relative', width:"100%",height:'fit-content', padding:"50px 0px"}}
              initial={{opacity:0, y:50}}
              animate={{opacity:1,y:0}}
              key={WeatherData.name}
@@ -197,10 +206,10 @@ function App() {
             <div style={{display:'flex', flexDirection:'row', gap:'20px', justifyContent:'center',alignItems:'center'}}>
                 <Cloud size={50} style={{flexShrink:0}}></Cloud>
                 <div>
-                  <h1>Let's discover</h1>
+                  <h1></h1>
                 </div>
               </div>
-              <p style={{position:'absolute',bottom:'150px',width:'100%', display:'flex',justifyContent:'center'}}>Not every city is on the list.</p>
+              <p style={{position:'absolute',bottom:'0px',width:'100%', display:'flex',justifyContent:'center'}}>Not every city is on the list.</p>
             
           </motion.div>
 
