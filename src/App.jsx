@@ -209,8 +209,6 @@ function App() {
                     <h1></h1>
                   </div>
                 </div>
-                <p style={{position:'absolute',bottom:'0px',width:'100%', display:'flex',justifyContent:'center'}}>Not every city is on the list.</p>
-              
             </motion.div>
 
           </>
