@@ -207,11 +207,11 @@ export default function SolarCycleGraph({ WeatherData }) {
             }}
             animate={{x: Mouse.X ? (Mouse?.X-50)*-1 : 0}}
             >
-            {Mouse?.X ? (
+            {Mouse?.X > 0.1 ? (
                 <>
                 {formattedTime}
                 </>
-            ) : 0}
+            ) : "12:00 AM"}
             </motion.p >
 
             <div style={{position:"absolute", top:"30px" ,height:"500%", background: "linear-gradient(to bottom, transparent, white 50%, transparent)",zIndex:-1, width:"1px"}}>

@@ -22,16 +22,10 @@ export default function Searchbar({setForecastHourlyData, setForecastDailyData, 
     }, [City]);
 
     useEffect(()=>{{
-        DonwloadLocation()
+        
+        DownloadCityData("Warszawa")
+
     }},[])
-    
-    async function DonwloadLocation(){
-        try{
-            const response = await fetch("http://ip-api.com/json/")
-            const data = await response.json()
-            DownloadCityData(data.city)
-        } catch(err) { console.log(err); setError(1)}
-    }
 
     async function DownloadCityData(city) {
         if(CurrentWeather.toLowerCase() != city.toLowerCase()) {
@@ -84,7 +78,7 @@ export default function Searchbar({setForecastHourlyData, setForecastDailyData, 
                                 </motion.div>
                             )
                         })}                
-                        {FilteredCities.length == 0 && "-"}        
+                        {FilteredCities.length == 0 && ""}        
                     </div>
                 </div>
                 

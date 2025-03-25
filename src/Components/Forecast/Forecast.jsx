@@ -78,7 +78,7 @@ export default function Forecast({ForecastHourlyData}) {
                                 transition={{type:"spring", damping:23, delay: (0.1 * index) +0.5}}
                                 >
                                     <p className="Hourly-Forecast-Input-Hours">{(new Date(element.dt_txt).getHours() % 12 || 12)}<span style={{fontSize:"14px"}}>{new Date(element.dt_txt).getHours() >= 12 ? "PM" : "AM"}</span></p>
-                                    <p className="Hourly-Forecast-Input-Icon"><IconMapper Weather={element.weather[0].main} /></p>
+                                    <p className="Hourly-Forecast-Input-Icon"><IconMapper Weather={element.weather[0].main} Day={(new Date(element.dt_txt).getHours()) >= 12? 1 : (new Date(element.dt_txt).getHours()) <= 6 ? 0 : 1}/></p>
                                     <p className="Hourly-Forecast-Input-Temp">{Math.round(element.main.temp)}°</p>
                                 </motion.div>
                             </>
