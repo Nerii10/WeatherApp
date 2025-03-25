@@ -20,7 +20,18 @@ export default function Searchbar({setForecastHourlyData, setForecastDailyData, 
         }
 
     }, [City]);
+
+    useEffect(()=>{{
+        DonwloadLocation()
+    }},[])
     
+    async function DonwloadLocation(){
+        try{
+            const response = await fetch("http://ip-api.com/json/")
+            const data = await response.json()
+            DownloadCityData(data.city)
+        } catch(err) { console.log(err); setError(1)}
+    }
 
     async function DownloadCityData(city) {
         if(CurrentWeather.toLowerCase() != city.toLowerCase()) {

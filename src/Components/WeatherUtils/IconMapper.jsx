@@ -39,6 +39,7 @@ export default function IconMapper({Weather, Day}){
                         return <img src={`${path}SnowNight.png`} className="icon"></img>;
                     }
                 case "Mist":
+                case "Fog":
                 case "Haze":
                     if(day == 1) {
                         return <img src={`${path}MistDay.png`} className="icon"></img>;

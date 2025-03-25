@@ -59,10 +59,6 @@ function App() {
     })
   },[])
 
-  useEffect(()=>{
-    console.log(ScrollYPx)
-  },[ScrollYPx])
-
   function TimeToLocalTime(timestamp,timezone){
     if (timezone !== undefined && timezone !== null) {
       const OffsetInSeconds = timezone; 
